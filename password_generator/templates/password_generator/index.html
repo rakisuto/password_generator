@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Password Generator</title>
+</head>
+
+<body>
+    <h1>Password Generator</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="password_length">Password Length:</label>
+        <input type="number" name="password_length" required><br><br>
+        <label><input type="checkbox" name="only_lowercase" class="checkbox-exclusive"> Lowercase letters
+            only</label><br>
+        <label><input type="checkbox" name="include_uppercase" class="checkbox-exclusive"> Include uppercase
+            letters</label><br>
+        <label><input type="checkbox" name="include_numbers"> Include numbers</label><br><br>
+        <label><input type="checkbox" name="include_symbols"> Include symbols</label><br><br>
+        <input type="submit" value="Generate Password" onclick="return validateForm()" />
+    </form>
+</body>
+
+<script>
+    const checkboxes = document.querySelectorAll('.checkbox-exclusive');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            checkboxes.forEach(cb => {
+                if (cb !== checkbox) {
+                    cb.checked = false;
+                }
+            });
+        });
+    });
+
+    function validateForm() {
+        // 各チェックボックスの状態を取得する
+        var lowercaseChecked = document.querySelector('input[name="only_lowercase"]').checked;
+        var uppercaseChecked = document.querySelector('input[name="include_uppercase"]').checked;
+        var numbersChecked = document.querySelector('input[name="include_numbers"]').checked;
+        var symbolsChecked = document.querySelector('input[name="include_symbols"]').checked;
+
+        // 全てのチェックボックスが未選択の場合はアラートを表示してフォーム送信をキャンセルする
+        if (!lowercaseChecked && !uppercaseChecked && !numbersChecked && !symbolsChecked) {
+            alert("Please select at least one option.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</html>
