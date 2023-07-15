@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from password_generator.views import password_generator, index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("", index, name="index"),
+    path("generate/", password_generator, name="password_generator"),
 ]

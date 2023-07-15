@@ -26,3 +26,7 @@ def password_generator(request):
         )
 
     return render(request, "password_generator/index.html")
+
+
+def index(request):
+    return render(request, "password_generator/index.html")
