@@ -14,10 +14,10 @@ def password_generator(request):
         # パスワードを生成
         password = generate_password(
             password_length,
-            only_lowercase,
-            include_uppercase,
-            include_numbers,
-            include_symbols,
+            only_lowercase=only_lowercase,
+            include_uppercase=include_uppercase,
+            include_numbers=include_numbers,
+            include_symbols=include_symbols,
         )
 
         # テンプレートにパスワードを渡してレンダリング
