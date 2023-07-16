@@ -8,7 +8,7 @@
 
 <body>
     <h1>Password Generator</h1>
-    <form method="POST" action="">
+    <form method="POST" action="{% url 'password_generator' %}">
         {% csrf_token %}
         <label for="password_length">Password Length:</label>
         <input type="number" name="password_length" required><br><br>
@@ -16,7 +16,7 @@
             only</label><br>
         <label><input type="checkbox" name="include_uppercase" class="checkbox-exclusive"> Include uppercase
             letters</label><br>
-        <label><input type="checkbox" name="include_numbers"> Include numbers</label><br><br>
+        <label><input type="checkbox" name="include_numbers"> Include numbers</label><br>
         <label><input type="checkbox" name="include_symbols"> Include symbols</label><br><br>
         <input type="submit" value="Generate Password" onclick="return validateForm()" />
     </form>
